@@ -38,6 +38,7 @@ class _ContactPageState extends State<ContactPage> {
     super.dispose();
   }
 
+  // Method to submit the form
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -63,6 +64,7 @@ class _ContactPageState extends State<ContactPage> {
           _isLoading = false;
         });
 
+        // Check if the form submission was successful
         if (response.statusCode == 201) {
           setState(() {
             _responseMessage = 'Form submitted successfully!';
@@ -81,11 +83,13 @@ class _ContactPageState extends State<ContactPage> {
     }
   }
 
+  // Method to validate the email format
   bool isEmailValid(String email) {
     final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
     return emailRegex.hasMatch(email);
   }
 
+  // Method to build a text field with an icon
   Widget _buildTextFieldWithIcon(
     TextEditingController controller,
     String labelText,
